@@ -62,7 +62,6 @@ function linkedListGenerator(){
         else if (number === 0) {
             head = nextNode;
             nodeToRemove.next = null;
-
         }
         else {
             if (nodeToRemove.next === null) {
@@ -76,7 +75,25 @@ function linkedListGenerator(){
     };
 
     const insert = (value, number) => {
-
+        let newNode = {
+            value: value,
+            next: []
+        }
+        let nodeToShift = get(number);
+        let previousNode = get(number - 1);
+        let nextNode = get(number + 1);
+        console.log("Before " + number + ' ' + previousNode.value + " " + newNode.value + " " + nodeToShift.value);
+        if (number < 0 || nodeToShift === false) {
+            return false;
+        }
+        else if (number === 0) {
+            newNode.next = head;
+            head = newNode;
+        }
+        else {
+            previousNode.next = newNode;
+            newNode.next = nodeToShift;
+        } 
     };
     
     return {
